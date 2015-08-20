@@ -4,6 +4,8 @@ module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'newnew',
     environment: environment,
+    contentSecurityPolicy: { 'connect-src': "'self' https://auth.firebase.com wss://*.firebaseio.com" },
+    firebase: 'https://torrid-inferno-6542.firebaseio.com/1-13-5-test',
     baseURL: '/',
     locationType: 'auto',
     EmberENV: {
@@ -11,6 +13,10 @@ module.exports = function(environment) {
         // Here you can enable experimental features on an ember canary build
         // e.g. 'with-controller': true
       }
+    },
+
+    torii: {
+      sessionServiceName: 'session'
     },
 
     APP: {

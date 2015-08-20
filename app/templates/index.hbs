@@ -1,0 +1,13 @@
+<button {{action "create"}}>Create</button>
+
+<ul>
+  {{#each model as |post|}}
+    <li>{{post.title}}
+      <ul>
+        {{#each post.comments as |comment|}}
+          <li>{{comment.body}} from ({{comment.post.title}})</li>
+        {{/each}}
+      </ul>
+    </li>
+  {{/each}}
+</ul>
