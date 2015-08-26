@@ -2,42 +2,26 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
   model() {
-    return this.store.findAll('post');
+    return this.store.findAll('project');
   },
 
   actions: {
 
     create() {
-      var name = 'Post ' + Math.floor(Math.random() * 1000);
-      var post = this.store.createRecord('post', {
-        title: name,
-        body: name
+      var projectName = `Project ${Math.floor(Math.random() * 1000)}`;
+      var project = this.store.createRecord('project', {
+        name: projectName,
       });
 
-      var comments = post.get('comments');
-
-      var c = [
-        `${name} - Comment 1`,
-        `${name} - Comment 2`,
-        `${name} - Comment 3`
-      ];
-
-      var promises = c.map((body) => {
-        let comment = this.store.createRecord('comment', {
-          body
-        });
-
-        comments.addObject(comment);
-
-        return comment.save();
+      let user = this.store.createRecord('user', {
+        name: `${projectName} user`
       });
 
-      Ember.RSVP.Promise.all(promises)
-        .then(() => {
-          post.save();
-        })
-        .catch(e => console.error(e));
+      project.set('user', user);
 
+      user.save()
+        .then(() => project.save())
+        .catch(e => console.error(e));;
     }
 
   }
