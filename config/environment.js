@@ -5,7 +5,7 @@ module.exports = function(environment) {
     modulePrefix: 'newnew',
     environment: environment,
     contentSecurityPolicy: { 'connect-src': "'self' https://auth.firebase.com wss://*.firebaseio.com" },
-    firebase: 'https://torrid-inferno-6542.firebaseio.com/1-13-5-test',
+    firebase: 'https://emberfire-issue-300.firebaseio-demo.com/',
     baseURL: '/',
     locationType: 'auto',
     EmberENV: {
